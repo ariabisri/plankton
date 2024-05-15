@@ -23,7 +23,7 @@ def result():
         if request.method == 'POST':
             img = preprocess_img(request.files['file'].stream)
             img_path = request.files['file'].stream
-            model = load_model('model/ResNet50.h5')
+            model = load_model('model/ResNet50.h5', compile=False)
             model2 = ResNet50()
             pred = predict_result(img, model)
             img_dis=image_display(img_path)
