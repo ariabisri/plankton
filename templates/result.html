@@ -1,0 +1,34 @@
+
+{% extends 'base.html' %}
+{% block head %}
+Classification Result
+{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <header class="text-center">
+        <h1 class="display-4">PlanktoScan</h1>
+        <p class="lead mb-5">Image Classification Result {{model_type}} model</p>
+    </header>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            {%if labels %}
+            <h1 class="display-6">The Image is</h1>
+            <ul>
+                {%for i in range (labels|length) %}
+                <li class="display-7 text-dark font-weight-bold">{{labels[i]}} : {{scores[i]}}</li> 
+                {%endfor%} 
+            </ul>
+            {%else%}
+            <h2 class="display-4 text-dark font-weight-bold">{{err}}</h2>
+            {%endif%}
+            <a href="/" type="button" class="btn btn-secondary">Home</a>
+            
+        </div>
+        <div class="col-4">
+            <div class="image-area mt-4"><img alt="" class="img-fluid rounded shadow-sm mx-auto d-block" id="imageResult" name="imageResult" src="data:image/jpeg;base64,{{img_path}}">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

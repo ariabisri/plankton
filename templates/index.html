@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block head %}
+PlanktoScan
+{% endblock %}
+
+{% block body %}
+<!-- {% if prediction!=null %}<div>The Image is {{prediction}}{{pred}}</div>{% endif %}
+{% if img_path!=null %}<img src="{{img_path}}" width="250">{% endif %} -->
+<div class="container">
+    <header class=" text-center">
+        <h1 class="display-4">PlanktoScan</h1>
+        <p class="lead mb-5">Method for Identifying Indonesian Plankton</p>
+    </header>
+
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <form action="{{url_for('result')}}" method="POST" enctype="multipart/form-data">
+                <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                    <input class="form-control border-0" id="upload" name="file" type="file">
+                    <label class="font-weight-light text-muted" for="upload" id="upload-label"></label>
+                    <div class="input-group-append">
+                        <label class="btn btn-light m-0 rounded-pill px-4" for="upload"> <i
+                                class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                                class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                    </div>
+                </div>
+                <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box
+                    below.</p>
+                <div class="image-area mt-4"><img alt="" class="img-fluid rounded shadow-sm mx-auto d-block" id="imageResult" name="imageResult" src="#">
+                </div>
+                <div class="mt-2">
+                    <select name="model" class="form-select m-0 rounded-pill px-4" aria-label="Default select example">
+                        <option selected value="resnet">ResNet50 Model</option>
+                        <option value="yolo">Yolo V8 Model</option>
+                    </select>
+                </div>
+                <div class="col text-center">
+                    <input class="btn btn-primary my-3" type="submit" value="Classify"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
