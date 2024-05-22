@@ -20,25 +20,25 @@ def index():
 
 @app.route('/result', methods=['POST'])
 def result():
-    # try:
-    model_type = request.form.get('model')
-    img_path = request.files['file'].stream
-    image_dis= image_display(img_path)
-    op_image = Image.open(img_path)
-    # img = preprocess_img(img_path)
-    if request.method == 'POST':
-        if model_type=='resnet':
-            labels, scores = keras_pred(op_image)
-        elif model_type == 'yolo':
-            img_array = np.array(op_image)
-            labels, scores = yolo_pred(img_array)
-            # return render_template("result.html", prediksi=str(pred), img_path=img_dis, deb=deb, labels= labels, scores = scores, top = top, model_type = model_type )
-        return render_template("result.html",  img_path=image_dis, labels= labels, scores = scores, model_type = model_type )
-            
+    try:
+        model_type = request.form.get('model')
+        img_path = request.files['file'].stream
+        image_dis= image_display(img_path)
+        op_image = Image.open(img_path)
+        # img = preprocess_img(img_path)
+        if request.method == 'POST':
+            if model_type=='resnet':
+                labels, scores = keras_pred(op_image)
+            elif model_type == 'yolo':
+                img_array = np.array(op_image)
+                labels, scores = yolo_pred(img_array)
+                # return render_template("result.html", prediksi=str(pred), img_path=img_dis, deb=deb, labels= labels, scores = scores, top = top, model_type = model_type )
+            return render_template("result.html",  img_path=image_dis, labels= labels, scores = scores, model_type = model_type )
+                
      
-    # except:
-    #     error = "File cannot be processed."
-    #     return render_template("result.html", err=error)
+    except:
+        error = "File cannot be processed."
+        return render_template("result.html", err=error)
 
 
 def image_display(img):
