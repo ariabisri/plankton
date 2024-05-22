@@ -1,3 +1,5 @@
 planktonenv/
 model/
 __pycache__/
+plankton_env
+.virenv/

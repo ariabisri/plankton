@@ -8,14 +8,14 @@ Classification Result
 <div class="container py-5">
     <header class="text-center">
         <h1 class="display-4">PlanktoScan</h1>
-        <p class="lead mb-5">Image Classification Result</p>
+        <p class="lead mb-5">Image Classification Result {{model_type}} model</p>
     </header>
     <div class="row justify-content-center">
         <div class="col-4">
             {%if labels %}
             <h1 class="display-6">The Image is</h1>
             <ul>
-                {%for i in range(top)%}
+                {%for i in range (labels|length) %}
                 <li class="display-7 text-dark font-weight-bold">{{labels[i]}} : {{scores[i]}}</li> 
                 {%endfor%} 
             </ul>
