@@ -4,7 +4,7 @@ from ultralytics import YOLO
 import matplotlib.pyplot as plt
 from PIL import Image
 
-model = YOLO('yolov8l-cls.pt')
+model = YOLO('model/yolov8l-cls.pt')
 
 # def main ():
 #     yolo_pred('anjing.jpg')
